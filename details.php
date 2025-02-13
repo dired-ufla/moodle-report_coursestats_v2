@@ -54,7 +54,7 @@ $forum = $DB->get_record_sql($query1, $params1);
 $repository = $DB->get_record_sql($query1, $params2);
 $activity = $DB->get_record_sql($query1, $params3);
 
-$allCoursesUsage = $forum->amount + $repository->amount + $activity->amount;
+$allRepositoryAndActivityCourses = $repository->amount + $activity->amount;
 
 $percentageForum = ($forum->amount > 0 ? round(($forum->amount / $allCoursesUsage) * 100, 2) : 0) . "%"; 
 
@@ -121,7 +121,7 @@ echo $OUTPUT->heading(get_string('modulesdetails', 'report_coursestats_v2'));
  foreach ($data as $item) {
     $row = array();
 
-    $percent = ($item->amount > 0 ? round(($item->amount / $allCoursesUsage) * 100, 2) : 0) . "%"; 
+    $percent = ($item->amount > 0 ? round(($item->amount / $allRepositoryAndActivityCourses) * 100, 2) : 0) . "%";
 
     $row[] = $item->name;
     $row[] = $item->amount;
