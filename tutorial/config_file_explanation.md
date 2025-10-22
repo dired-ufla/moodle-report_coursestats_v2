@@ -1,71 +1,72 @@
-[Voltar](../README.md)
+[Back](../README.md)
 
-# Conhecendo a anatomia de um arquivo de configuração
+# Understanding the anatomy of a configuration file
 
-Este tutorial apresenta a anatomia do arquivo de configuração do plugin "CourseStats". O conteúdo também está disponível em formato de [vídeo](https://www.youtube.com/watch?v=b8SyizBfEIs).
+This tutorial presents the anatomy of the "CourseStats" plugin configuration file. The content is also available in format [video](https://www.youtube.com/watch?v=b8SyizBfEIs).
 
-## 1. O que é um arquivo de configuração?
-- O arquivo de configuração é um documento de texto que permite organizar e personalizar a categorização de cursos dentro do plugin. Ele é utilizado para definir categorias e cursos sem afetar a organização existente no Moodle. 
+## 1. What is a configuration file?
+- The configuration file is a text document that allows you to organize and customize the categorization of courses within the plugin. It is used to define categories and courses without affecting the existing organization in Moodle.
+  
+- Each file can contain one or more categories, and each category can be associated with a list of courses.
 
-- Cada arquivo pode conter uma ou mais categorias, e cada categoria pode estar associada a uma lista de cursos.
 
+## 2. Structure of a Configuration File
 
-## 2. Estrutura de um arquivo de configuração
+- The file is composed of categories and their respective course lists.
 
-- O arquivo é composto por categorias e suas respectivas listas de cursos.
+    - Each category in the configuration file is identified by a name followed by a colon (`:`) at the end. The category name is free and can be defined by the user.
 
-    - Cada categoria no arquivo de configuração é identificada por um nome seguido pelo símbolo de dois pontos (`:`) no final. O nome da categoria é livre e pode ser definido pelo usuário.
+    - On the line below each category is the list of courses belonging to it.
 
-    - Na linha abaixo de cada categoria, está a lista de cursos pertencentes a ela. 
+- Each entry in the course list contains:
 
-- Cada entrada da lista de cursos contém:
+    - The Moodle category identifier where the course is located, followed by a colon (`:`); and
+    - The course short name(s), separated by a comma (`,`). The short name can be entered completely or just as a partial string, as will be explained later.
 
-    - O identificador da categoria no Moodle onde o curso se encontra, seguido pelo símbolo de dois pontos (`:`); e
-    - O nome breve do(s) curso(s), separados por vírgula (`,`). O nome breve pode ser informado por completo ou apenas uma parte, como será explicado mais adiante.
+## 3. Example of a configuration file
 
-## 3. Exemplo de um arquivo de configuração
-
-- Considere o exemplo abaixo. Este arquivo é formado por duas categorias, **Matemática** e **Português**, e cada categoria contém dois cursos. Por exemplo, a **Matemática** é composta pelos cursos **1ef-mat** e **2ef-mat**, que advêm das categorias de ID `1` e `2` do Moodle.
+- Consider the example below. This file consists of two categories, **Math** and **Portuguese**, and each category contains two courses. For example, **Math** is composed of the courses **1ef-mat** and **2ef-mat**, which come from Moodle category IDs `1` and `2`.
 
 ```
-Matemática:
+Math:
 1: 1ef-mat
 2: 2ef-mat
 
-Português:
+Portuguese:
 1: 1ef-lp
 2: 2ef-lp
 ```
 
-- Já o próximo exemplo apresenta apenas uma categoria, **Primeiro Ano - EF**, que contém dois cursos, **1ef-mat** e **1ef-lp**, ambos pertencentes à categoria de ID `1` do Moodle. 
-
+- The next example presents only one category, **First Year - EF**, which contains two courses, **1ef-mat** and **1ef-lp**, both belonging to the Moodle category ID `1`.
+  
 ```
-Primeiro Ano - EF:
+First Year - EF:
 1: 1ef-mat, 1ef-lp
 ```
 
-## 4. Filtrando cursos de uma categoria
+## 4. Filtering Courses in a Category
 
-- O plugin permite simplificar a filtragem de cursos ao utilizar partes do nome breve do curso. Para isso, você pode usar o símbolo de porcentagem (`%`) para representar partes omitidas no nome.
+- The plugin allows you to simplify course filtering by using parts of the course's short name. To do this, you can use the percent symbol (`%`) to represent omitted parts of the name.
+  
+    - To filter all courses in a category that ends with **mat**, use: `%mat`.
+    - To filter all courses in a category that starts with **mat**, use: `mat%`.
+    - To filter all courses in a category that contain the word **mat**, use: `%mat%`.
 
-    - Para filtrar todos os cursos de uma categoria que terminam com **mat**, use: `%mat`.
-    - Para filtrar todos os cursos de uma categoria que começam com **mat**, use: `mat%`.
-    - Para filtrar todos os cursos de uma categoria que contêm a palavra **mat**, use: `%mat%`.
+-Additionally, to add all courses in a given Moodle category, you can use the asterisk (`*`) symbol.
 
-- Além disso, para adicionar todos os cursos de uma determinada categoria do Moodle, você pode usar o símbolo asterisco (`*`).
+- Consider the example below. It consists of two categories: **Math** and **General**.
 
-- Considere o exemplo abaixo. Ele é formado por duas categorias: **Matemática** e **Geral**.
-
-    - A categoria **Matemática** inclui todos os cursos da categoria de ID `1` no Moodle que terminam com **mat** (por exemplo, **1ef-mat**, **2ef-mat**).
-    - A categoria **Geral** inclui todos os cursos da categoria de ID `1` no Moodle.
+    - The **Math** category includes all courses in Moodle category ID `1` that end with **mat** (e.g., **1ef-mat**, **2ef-mat**). 
+    - The **General** category includes all courses in Moodle category ID `1`.
 
 ```
-Matemática:
+Math:
 1: %mat
 
-Geral:
+General:
 1: *
 ```
 
-## 5. Conclusão
-- No [próximo tutorial](config_file_usage.md), será apresentado um exemplo prático de utilização do arquivo de configuração em uma instalação do Moodle, possibilitando a visualização dos resultados dessa configuração.
+## 5. Conclusion
+
+- In the [next tutorial](config_file_usage.md), a practical example of using the configuration file in a Moodle installation will be presented, allowing you to view the results of this configuration.

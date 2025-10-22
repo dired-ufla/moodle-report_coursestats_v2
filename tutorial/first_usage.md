@@ -1,44 +1,44 @@
-[Voltar](../README.md)
+[Back](../README.md)
 
-# Utilizando o plugin pela primeira vez
+# Using the plugin for the first time
 
-Este tutorial apresenta o passo a passo para utilizar o plugin "CourseStats" pela primeira vez. O conteúdo também está disponível em formato de [vídeo](https://www.youtube.com/watch?v=98T4p3GH8F8).
+This tutorial provides a step-by-step guide on how to use the "CourseStats" plugin for the first time. The content is also available in format [video](https://www.youtube.com/watch?v=98T4p3GH8F8).
 
-## 1. Acessando a área do plugin
-- Após a instalação do plugin, vá até a aba **Relatórios** e clique em **Estatísticas de Utilização de Cursos V2**. O plugin irá carregar uma lista de categorias cadastradas no seu Moodle.
-- No exemplo apresentado no vídeo que acompanha este tutorial (Figura 1), foi criado um conjunto de categorias para teste, incluindo **EF - 1º Ano**, **EF - 2º Ano**, **EF - 6º Ano** e **EF - 9º Ano**, cada uma com apenas dois cursos. Havia ainda uma categoria maior, denominada **Graduação**, contendo mais de 1.600 cursos.
+## 1. Accessing the plugin area
+- After installing the plugin, go to the **Reports** tab and click on **Course Usage Statistics V2**. The plugin will load a list of categories registered in your Moodle.
+- In the example presented in the video that accompanies this tutorial (Figure 1), a set of categories was created for testing, including **EF - 1st Year**, **EF - 2nd Year**, **EF - 6th Year**, and **EF - 9th Year**, each with only two courses. There was also a larger category, called **Graduation**, containing more than 1,600 courses.
 
-![Lista de categorias pré-cadastradas no Moodle](../images/tut2-1.png)
+![List of pre-registered categories in Moodle](../images/tut2-1.png)
 
-*Figura 1: Lista de categorias pré-cadastradas no Moodle.*
+*Figure 1: List of categories pre-registered in Moodle.*
 
-## 2. Visualizando categorias e suas taxas de utilização
-- Ao acessar o plugin, você notará (Figura 1) que ele exibe as taxas de utilização de todas as categorias com o valor **0 (zero)**. Isso ocorre porque o plugin detecta a utilização dos cursos apenas após a sua instalação.
-- Ao clicar na quantidade de cursos existentes em uma categoria (por exemplo, **EF - 1º Ano**), você poderá visualizar a lista de cursos desta categoria (Figura 2).
+## 2. Viewing Categories and Their Usage Rates
+- When you access the plugin, you will notice (Figure 1) that it displays the usage rates for all categories with the value **0 (zero)**. This happens because the plugin only detects course usage after its installation.
+- By clicking on the number of existing courses within a category (for example, **EF - 1st Year**), you will be able to view the list of courses in that category (Figure 2).
 
-![Lista de cursos de uma categoria](../images/tut2-2.png)
+![List of courses in a category](../images/tut2-2.png)
 
-*Figura 2: Lista de cursos de uma categoria.*
+*Figure 2: List of courses in a category.*
 
-## 3. Alterando a taxa de utilização de uma categoria 
-- Quando você realiza qualquer alteração em um curso (como enviar um tópico no fórum ou adicionar uma atividade), a taxa de utilização da categoria onde o curso está localizado será atualizada automaticamente.
-- Por exemplo, ao enviar um tópico no fórum do curso **1ef-mat**, da categoria **EF - 1º Ano**, ao retornar à tela do plugin, você verá que a taxa de utilização da categoria aumentou para **50%** (Figura 3).
+## 3. Changing a Category's Usage Rate
+- When you make any changes to a course (such as submitting a forum topic or adding an activity), the usage rate for the category where the course is located will be automatically updated.
+- For example, when submitting a topic in the forum for the **1ef-mat** course, in the **EF - 1st Year** category, when you return to the plugin screen, you will see that the category's usage rate has increased to **50%** (Figure 3).
+ 
+  ![New usage fee for the EF category - 1st Year](../images/tut2-3.png)
 
-![Nova taxa de utilização da categoria EF - 1º Ano](../images/tut2-3.png)
+*Figure 3: New usage fee for the EF category - 1st Year.*
 
-*Figura 3: Nova taxa de utilização da categoria EF - 1º Ano.*
+## 4. Displaying the Usage Type for Courses in a Category
+- By clicking on the name of a category, the plugin will show the usage types for the courses in that category, which can be:
+    - **Forum**: when the teacher only uses the course's announcements forum;
+    - **Repository**: when the teacher only uses resources for hosting files in Moodle; or
+    - **Activity Framework**: when the teacher uses other available modules in Moodle, such as Assignments, **Quizzes, among others.
+- For example, assuming that the teacher of the **1ef-mat** course has only sent notices to students through the forum, the result for the **EF - 1º Ano** category will be as shown in Figure 4.
+  
+![Types of use of courses in the EF category - 1st Year](../images/tut2-4.png)
 
-## 4. Exibindo o tipo de utilização dos cursos de uma categoria 
-- Ao clicar no nome de uma categoria, o plugin exibirá os tipos de utilização dos cursos dessa categoria, que podem ser:
-    - **Fórum**: quando o professor utiliza apenas o fórum de avisos do curso; 
-    - **Repositório**: quando o professor utiliza apenas recursos para hospedagem de arquivos no Moodle; ou 
-    - **Arcabouço de Atividades**: quando o professor utiliza outros módulos disponíveis no Moodle, como *Tarefas*, *Questionários*, entre outros.
-- Por exemplo, supondo que o professor do curso **1ef-mat** tenha apenas enviado avisos aos alunos pelo fórum, o resultado para a categoria **EF - 1º Ano** será como mostrado na Figura 4.
+*Figure 4: Types of use of courses in the EF category - 1st Year.*
 
-![Tipos de utilização dos cursos da categoria EF - 1º Ano](../images/tut2-4.png)
-
-*Figura 4: Tipos de utilização dos cursos da categoria EF - 1º Ano.*
-
-## 5. Finalizando o primeiro uso do plugin 
-- O plugin permite que você visualize a listagem de cursos criados, utilizados e não utilizados de cada categoria. Para isso, basta clicar na quantidade de cursos correspondente ao que deseja visualizar.
-- No [próximo tutorial](config_file_explanation.md), será explicado como funciona a anatomia de um arquivo de configuração do plugin. Isso permitirá que você adapte o plugin às necessidades específicas da sua instituição.
+## 5. Finalizing the first use of the plugin
+- The plugin allows you to view a list of created, used, and unused courses in each category. To do so, simply click on the number of courses corresponding to the one you want to view.
+- The [next tutorial](config_file_explanation.md), will explain the anatomy of a plugin configuration file. This will allow you to adapt the plugin to your institution's specific needs.
