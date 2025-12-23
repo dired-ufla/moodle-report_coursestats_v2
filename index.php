@@ -36,13 +36,13 @@ echo $OUTPUT->header();
 
 
 if (!empty($customcatnames)) {
-  $DB->execute("TRUNCATE TABLE {report_coursestatsv2_cat}");
-  $DB->execute("TRUNCATE TABLE {report_coursestatsv2_course}");
-  report_coursestats_v2_process_custom_config($customcatnames);
+    $DB->delete_records('report_coursestatsv2_cat');
+    $DB->delete_records('report_coursestatsv2_course');
+    report_coursestats_v2_process_custom_config($customcatnames);
 } else {
-  $DB->execute("TRUNCATE TABLE {report_coursestatsv2_cat}");
-  $DB->execute("TRUNCATE TABLE {report_coursestatsv2_course}");
-  report_coursestats_v2_process_moodle_config();
+    $DB->delete_records('report_coursestatsv2_cat');
+    $DB->delete_records('report_coursestatsv2_course');
+    report_coursestats_v2_process_moodle_config();
 }
 
 redirect(new moodle_url($CFG->wwwroot . '/report/coursestats_v2/table_categories.php'));
