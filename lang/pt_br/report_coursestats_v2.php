@@ -51,3 +51,4 @@ $string['percentageUse'] = 'Porcentagem de cursos que utilizam';
 $string['update'] = 'Atualizar lista de categorias';
 $string['sortcategoriesbyname'] = 'Ordenar categorias pelo nome, na página principal do plugin';
 $string['sortcategoriesbyname_desc'] = 'Se habilitado, as categorias serão ordenadas por seus nomes na página principal do plugin';
+$string['privacy:metadata'] = 'O plugin de relatório Course Usage Statistics - v2 não armazena dados pessoais.';

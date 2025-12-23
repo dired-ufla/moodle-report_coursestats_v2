@@ -51,3 +51,4 @@ $string['percentageUse'] = 'Percentage of courses that use';
 $string['update'] = 'Update category list';
 $string['sortcategoriesbyname'] = 'Sort categories by its name on the plugin\'s main page';
 $string['sortcategoriesbyname_desc'] = 'If enabled, the categories will be sorted by their names on the plugin\'s main page';
+$string['privacy:metadata'] = 'The Course Usage Statistics - v2 report plugin does not store any personal data.';
