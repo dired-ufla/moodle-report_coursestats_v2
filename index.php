@@ -28,29 +28,22 @@ require_login();
 
 
 //main function that will process the input
-
-
 admin_externalpage_setup('reportcoursestatsv2', '', null, '', array('pagelayout' => 'report'));
 
 $customcatnames = get_config('report_coursestats_v2', 'customcatnames');
 
 echo $OUTPUT->header();
-//echo $OUTPUT->heading(get_string('heading',  'report_coursestats_v2'));
 
 
 if (!empty($customcatnames)) {
   $DB->execute("TRUNCATE TABLE {report_coursestatsv2_cat}");
   $DB->execute("TRUNCATE TABLE {report_coursestatsv2_course}");
   report_coursestats_v2_process_custom_config($customcatnames);
-  //echo "Feito: configuração customizada!!!";
 } else {
   $DB->execute("TRUNCATE TABLE {report_coursestatsv2_cat}");
   $DB->execute("TRUNCATE TABLE {report_coursestatsv2_course}");
   report_coursestats_v2_process_moodle_config();
-  //echo "Feito: configuração do Moodle!!!";
 }
-
-//require_once('table_categories.php');
 
 redirect(new moodle_url($CFG->wwwroot . '/report/coursestats_v2/table_categories.php'));
 
