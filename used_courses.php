@@ -25,14 +25,6 @@
 require_once('../../config.php');
 require_login();
 
-echo '<style>
-    .text-center {
-        text-align: center;
-    }
-    .bold-text {
-        font-weight: bold;
-    }
-</style>';
 
 // Get the category ID from the URL
 $categoryid = required_param('categoryid', PARAM_INT);
