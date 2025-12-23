@@ -21,7 +21,7 @@
  * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
 
-function processCustomConfig($configuration)
+function report_coursestats_v2_process_custom_config($configuration)
 {
     // Make the database instance global to use it anywhere in the function
     global $DB;
@@ -347,7 +347,7 @@ function processCustomConfig($configuration)
 
 
 
-function processMoodleConfig()
+function report_coursestats_v2_process_moodle_config()
 {
     global $DB; // Access the global database object
 
