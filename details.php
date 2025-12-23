@@ -23,6 +23,7 @@
 
 
 require_once('../../config.php');
+require_login();
 
 // Get the category ID from the URL
 $categoryid = required_param('categoryid', PARAM_INT);

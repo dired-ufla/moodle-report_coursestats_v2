@@ -23,6 +23,7 @@
 
 
 require_once('../../config.php');
+require_login();
 
 echo '<style>
     .text-center {
