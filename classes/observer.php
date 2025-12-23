@@ -29,22 +29,22 @@ class report_coursestats_v2_observer {
 		global $DB;
 
 		// Check if the forum instance is for announcements 
-		$result = $DB->get_record(FORUM_TABLE_NAME_V2, array('id'=>$event->other['forumid']));
-		if ($result->type === NEWS_FORUM_NAME_V2) {
+		$result = $DB->get_record(REPORT_COURSESTATS_V2_FORUM_TABLE_NAME, array('id'=>$event->other['forumid']));
+		if ($result->type === REPORT_COURSESTATS_V2_NEWS_FORUM_NAME) {
 			// Get the course, based on its id
-			$course = $DB->get_record(COURSE_TABLE_NAME_V2, array('id'=>$event->courseid));
+			$course = $DB->get_record(REPORT_COURSESTATS_V2_COURSE_TABLE_NAME, array('id'=>$event->courseid));
 			
 			/* 
 			 * Check if there is no records for the 'courseid' in the table 'report_coursestatsv2'.
 			 * If yes, a record is created with usage type classified as 'forum'. 
 			 */
-			if (!$DB->record_exists(PLUGIN_TABLE_NAME_V2, array('courseid'=>$event->courseid))) {
+			if (!$DB->record_exists(REPORT_COURSESTATS_V2_PLUGIN_TABLE_NAME, array('courseid'=>$event->courseid))) {
 				$record = new stdClass();
 				$record->courseid = $event->courseid;
-				$record->prev_usage_type = NULL_USAGE_TYPE_V2;
-				$record->curr_usage_type = FORUM_USAGE_TYPE_V2;
+				$record->prev_usage_type = REPORT_COURSESTATS_V2_NULL_USAGE_TYPE;
+				$record->curr_usage_type = REPORT_COURSESTATS_V2_FORUM_USAGE_TYPE;
 				$record->last_update = time();
-				$DB->insert_record(PLUGIN_TABLE_NAME_V2, $record);
+				$DB->insert_record(REPORT_COURSESTATS_V2_PLUGIN_TABLE_NAME, $record);
 			} 					
 		}
 	}
@@ -53,7 +53,7 @@ class report_coursestats_v2_observer {
 		global $DB;
        	
 		// Insert the module in the table report_coursestatsv2_mod
-		$module = $DB->get_record(MODULES_TABLE_NAME_V2, array('name'=>$event->other['modulename']));
+		$module = $DB->get_record(REPORT_COURSESTATS_V2_MODULES_TABLE_NAME, array('name'=>$event->other['modulename']));
 		$moduleid = $module->id;
 		$modulename = $module->name;
 
@@ -61,8 +61,8 @@ class report_coursestats_v2_observer {
  		$record->courseid = $event->courseid;
  		$record->moduleid = $moduleid;
 
-		if (!$DB->record_exists(PLUGIN_MODULES_TABLE_NAME_V2, array('courseid'=>$event->courseid, 'moduleid'=>$moduleid))) {
-			$DB->insert_record(PLUGIN_MODULES_TABLE_NAME_V2, $record);
+		if (!$DB->record_exists(REPORT_COURSESTATS_V2_PLUGIN_MODULES_TABLE_NAME, array('courseid'=>$event->courseid, 'moduleid'=>$moduleid))) {
+			$DB->insert_record(REPORT_COURSESTATS_V2_PLUGIN_MODULES_TABLE_NAME, $record);
 		}
 
 		/* 
@@ -70,33 +70,33 @@ class report_coursestats_v2_observer {
 		* Otherwise, the usage type is 'activity' 
 		*/
 		$usage_type = '';
-		if (in_array($modulename, unserialize(REPOSITORY_MODULES_V2))) {
- 			$usage_type	= REPOSITORY_USAGE_TYPE_V2;
+		if (in_array($modulename, unserialize(REPORT_COURSESTATS_V2_REPOSITORY_MODULES))) {
+			$usage_type	= REPORT_COURSESTATS_V2_REPOSITORY_USAGE_TYPE;
 		} else {
- 			$usage_type	= ACTIVITY_USAGE_TYPE_V2;
+			$usage_type	= REPORT_COURSESTATS_V2_ACTIVITY_USAGE_TYPE;
 		}
 
 		// Get the course, based on its id
-		$course = $DB->get_record(COURSE_TABLE_NAME_V2, array('id'=>$event->courseid));
+		$course = $DB->get_record(REPORT_COURSESTATS_V2_COURSE_TABLE_NAME, array('id'=>$event->courseid));
 				
-		if (!$DB->record_exists(PLUGIN_TABLE_NAME_V2, array('courseid'=>$event->courseid))) {
- 			$record = new stdClass();
- 			$record->courseid = $event->courseid;
- 			$record->prev_usage_type = NULL_USAGE_TYPE_V2;
- 			$record->curr_usage_type = $usage_type;			 
- 			$record->last_update =  time();
- 			$record->categoryid = $course->category;
- 			$DB->insert_record(PLUGIN_TABLE_NAME_V2, $record);
+		if (!$DB->record_exists(REPORT_COURSESTATS_V2_PLUGIN_TABLE_NAME, array('courseid'=>$event->courseid))) {
+			$record = new stdClass();
+			$record->courseid = $event->courseid;
+			$record->prev_usage_type = REPORT_COURSESTATS_V2_NULL_USAGE_TYPE;
+			$record->curr_usage_type = $usage_type;			 
+			$record->last_update =  time();
+			$record->categoryid = $course->category;
+			$DB->insert_record(REPORT_COURSESTATS_V2_PLUGIN_TABLE_NAME, $record);
 		} else {
- 			$result = $DB->get_record(PLUGIN_TABLE_NAME_V2, array('courseid'=>$event->courseid));
- 			if ($result->curr_usage_type === FORUM_USAGE_TYPE_V2 or 
-	 			($result->curr_usage_type === REPOSITORY_USAGE_TYPE_V2 and $usage_type === ACTIVITY_USAGE_TYPE_V2)) {
-	 			$result->prev_usage_type = $result->curr_usage_type;
-	 			$result->curr_usage_type = $usage_type;		
-	 			$result->categoryid = $course->category;
-	 			$result->last_update =  time();
-	 			$DB->update_record(PLUGIN_TABLE_NAME_V2, $result); 
- 			}			
+			$result = $DB->get_record(REPORT_COURSESTATS_V2_PLUGIN_TABLE_NAME, array('courseid'=>$event->courseid));
+			if ($result->curr_usage_type === REPORT_COURSESTATS_V2_FORUM_USAGE_TYPE or 
+				($result->curr_usage_type === REPORT_COURSESTATS_V2_REPOSITORY_USAGE_TYPE and $usage_type === REPORT_COURSESTATS_V2_ACTIVITY_USAGE_TYPE)) {
+				$result->prev_usage_type = $result->curr_usage_type;
+				$result->curr_usage_type = $usage_type;		
+				$result->categoryid = $course->category;
+				$result->last_update =  time();
+				$DB->update_record(REPORT_COURSESTATS_V2_PLUGIN_TABLE_NAME, $result); 
+			}			
 		}
 	}
 

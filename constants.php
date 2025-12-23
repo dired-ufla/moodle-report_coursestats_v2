@@ -23,14 +23,14 @@
 
 defined('MOODLE_INTERNAL') || die;
 
-define('NULL_USAGE_TYPE_V2', 'null');
-define('FORUM_USAGE_TYPE_V2', 'forum');
-define('REPOSITORY_USAGE_TYPE_V2', 'repository');
-define('ACTIVITY_USAGE_TYPE_V2', 'activity');
-define('PLUGIN_TABLE_NAME_V2', 'report_coursestatsv2');
-define('PLUGIN_MODULES_TABLE_NAME_V2', 'report_coursestatsv2_mod');
-define('NEWS_FORUM_NAME_V2', 'news');
-define('FORUM_TABLE_NAME_V2', 'forum');
-define('COURSE_TABLE_NAME_V2', 'course');
-define('MODULES_TABLE_NAME_V2', 'modules');
-define('REPOSITORY_MODULES_V2', serialize(array('resource', 'url', 'folder')));
+define('REPORT_COURSESTATS_V2_NULL_USAGE_TYPE', 'null');
+define('REPORT_COURSESTATS_V2_FORUM_USAGE_TYPE', 'forum');
+define('REPORT_COURSESTATS_V2_REPOSITORY_USAGE_TYPE', 'repository');
+define('REPORT_COURSESTATS_V2_ACTIVITY_USAGE_TYPE', 'activity');
+define('REPORT_COURSESTATS_V2_PLUGIN_TABLE_NAME', 'report_coursestatsv2');
+define('REPORT_COURSESTATS_V2_PLUGIN_MODULES_TABLE_NAME', 'report_coursestatsv2_mod');
+define('REPORT_COURSESTATS_V2_NEWS_FORUM_NAME', 'news');
+define('REPORT_COURSESTATS_V2_FORUM_TABLE_NAME', 'forum');
+define('REPORT_COURSESTATS_V2_COURSE_TABLE_NAME', 'course');
+define('REPORT_COURSESTATS_V2_MODULES_TABLE_NAME', 'modules');
+define('REPORT_COURSESTATS_V2_REPOSITORY_MODULES', serialize(array('resource', 'url', 'folder')));
